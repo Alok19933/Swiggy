@@ -1,22 +1,23 @@
-FROM node:16-slim
+# Use Node.js 16 slim as the base image
+FROM node:16
 
-# Create and set ownership of working dir
-RUN mkdir -p /app && chown -R node:node /app
+# Set the working directory
 WORKDIR /app
 
-# Copy only package descriptors and install dependencies
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy only necessary app files, not everything
-# Avoid recursively copying everything unless .dockerignore is used to filter
+# Copy the rest of the application code
 COPY . .
 
-# IMPORTANT: Use a .dockerignore file to avoid copying secrets or unnecessary files
-# Example: .env, .git, node_modules, coverage, etc.
+# Build the React app
+RUN npm run build
 
-# Drop root privileges — run as a safer non-root user
-USER node
+# Expose port 3000 (or the port your app is configured to listen on)
+EXPOSE 3000
 
-# Start the application
-CMD ["node", "server.js"]
+# Start your Node.js server (assuming it serves the React app)
+CMD ["npm", "start"]
