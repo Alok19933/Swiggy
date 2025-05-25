@@ -37,7 +37,6 @@ phases:
           -Dsonar.sources=. \
           -Dsonar.host.url=http://16.16.110.79:9000 \
           -Dsonar.login=$SONAR_TOKEN
-          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
 artifacts:
   files:
