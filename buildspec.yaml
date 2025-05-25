@@ -21,7 +21,7 @@ phases:
       - curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
       - unzip -o sonar-scanner.zip -d $HOME/.sonar
       - export PATH=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin:$PATH
-      - echo "Performing Trivy file scan before building the image..."
+
 
   build:
     commands:
