@@ -1,0 +1,9 @@
+# Prevents secrets and unnecessary files from being included in the image
+node_modules
+npm-debug.log
+.env
+*.pem
+*.key
+*.crt
+coverage
+.git
