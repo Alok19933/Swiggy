@@ -41,12 +41,14 @@ phases:
   post_build:
     commands:
       - echo "Running Sonar Scanner..."
-      - sonar-scanner \
+      - |
+        sonar-scanner \
           -Dsonar.projectKey=swiggy \
           -Dsonar.sources=. \
           -Dsonar.host.url=http://16.16.110.79:9000 \
           -Dsonar.login=$SONAR_TOKEN
 
-artifacts:
-  files:
-    - appspec.yaml
+
+  artifacts:
+    files:
+      - appspec.yaml
